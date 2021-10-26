@@ -46,7 +46,7 @@ if (re.findall('^([0-9]|[0-9][0-9]|[0-9][0-9][0-9]|1[0-8][0-9][0-9])$',cadena_nu
         print("Es menor a 1900")
 else:
     print("No es menor a 1900")
-"""
+
 
 #Recursion 1
 
@@ -111,3 +111,33 @@ def division_entera(a,b):
 print(division_entera(7,3))
 print(division_entera(16,2))
 print(division_entera(5,6))
+
+"""
+import functools
+from functools import reduce
+
+#Colecciones 2
+
+num = int(input("Ingrese un numero para generar la sumatoria en pi: \n"))
+lista = []
+#Hacemos la lista decreciente para usar en el map
+def crearListaDecreciente(num, lista):
+    if num == 0:
+        return lista.append(0)
+    else:
+       lista.append(num)
+       crearListaDecreciente(num - 1, lista)
+       return lista
+
+print(crearListaDecreciente(num,lista))
+
+
+def sumatoriaPi(num):
+    return 4*(-1)**num/(2*num+1)
+
+
+suma = list(map(sumatoriaPi,lista))
+print(suma)
+resultado = reduce(lambda a,b: a+b, suma)
+
+print(resultado)
